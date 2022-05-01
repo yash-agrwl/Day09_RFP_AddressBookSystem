@@ -8,11 +8,13 @@ namespace AddressBookSystem
 {
     internal class AddressBook
     {
-        private List<Person> _contactList = new();
+        List<Person> _contactList = new();
 
-        public void AddRecords(Person p)
+        public void AddRecords()
         {
-            _contactList.Add(p);
+            Person person = new();
+            person.InputContact();
+            _contactList.Add(person);
             Console.WriteLine("\nRecord successfully Added in Address Book");
         }
 
@@ -21,9 +23,13 @@ namespace AddressBookSystem
             if (this.CheckEmpty())
                 return;
             
-            Console.WriteLine("\nThe Contact Details Available in Address Book are:\n");
+            Console.WriteLine("\nThe Contact Records Available in Address Book are:\n");
+            int recordCount = 1;
             foreach (Person p in _contactList)
+            {
+                Console.WriteLine($"----Record {recordCount++}----");
                 Console.WriteLine(p.DisplayContact());
+            }
         }
 
         public void EditRecords(string firstName, string lastName)
@@ -104,6 +110,23 @@ namespace AddressBookSystem
                     }
                     while (option != "r");
 
+                    return;
+                }
+            }
+            Console.WriteLine("\nYour entered details does not match with any records");
+        }
+
+        public void DeleteRecords(string firstName, string lastName)
+        {
+            if (this.CheckEmpty())
+                return;
+
+            foreach (var person in _contactList)
+            {
+                if (firstName == person.FirstName && lastName == person.LastName)
+                {
+                    _contactList.Remove(person);
+                    Console.WriteLine("\nRecord Deleted Successfully");
                     return;
                 }
             }
