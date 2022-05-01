@@ -103,10 +103,16 @@ namespace AddressBookSystem
                                 Console.WriteLine("\nInvalid Choice Entered.");
                                 break;
                         }
+                        loop:
                         Console.WriteLine("\nPress 'u' to update new fields.");
                         Console.WriteLine("Press 'r' to return to the User Menu");
                         Console.Write("Enter Choice: ");
                         option = Console.ReadLine();
+                        if (option != "r" && option != "u")
+                        {
+                            Console.WriteLine("\nInvalid Choice Entered.");
+                            goto loop;
+                        }
                     }
                     while (option != "r");
 

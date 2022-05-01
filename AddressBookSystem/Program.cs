@@ -18,8 +18,24 @@ namespace AddressBookSystem
                 switch (input)
                 {
                     case "A":
-                        Console.WriteLine("\nEnter Details to Add New Contact-");                       
-                        book1.AddRecords();
+                        string option;
+                        do
+                        {
+                            Console.WriteLine("\nEnter Details to Add New Contact-");
+                            book1.AddRecords();
+
+                            loop:
+                                Console.WriteLine("\nPress 'a' to add new record.");
+                                Console.WriteLine("Press 'r' to return to the User Menu");
+                                Console.Write("Enter Choice: ");
+                                option = Console.ReadLine();
+                                if (option != "r" && option != "a")
+                                {
+                                    Console.WriteLine("\nInvalid Choice Entered.");
+                                    goto loop;
+                                }
+                        }
+                        while (option != "r");
                         break;
                     case "E":
                         Console.WriteLine("\nEnter Name of the person to edit-");
