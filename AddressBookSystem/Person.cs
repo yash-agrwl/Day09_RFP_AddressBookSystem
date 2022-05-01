@@ -13,7 +13,7 @@ namespace AddressBookSystem
         public string Address;
         public string City;
         public string State;
-        public string ZipCode;
+        public int ZipCode;
         public long PhoneNumber;
         public string EmailId;
 
@@ -30,7 +30,7 @@ namespace AddressBookSystem
             Console.Write("Enter State: ");
             this.State = Console.ReadLine();
             Console.Write("Enter Zip-Code: ");
-            this.ZipCode = Console.ReadLine();
+            this.ZipCode = int.Parse(Console.ReadLine());
             Console.Write("Enter ContactNumber: ");
             this.PhoneNumber = long.Parse(Console.ReadLine());
             Console.Write("Enter Email-Id: ");
